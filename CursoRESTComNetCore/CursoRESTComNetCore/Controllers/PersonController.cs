@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using CursoRESTComNetCore.Model;
+using CursoRESTComNetCore.Services.Implementations;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -13,36 +15,57 @@ namespace CursoRESTComNetCore.Controllers
     {     
 
         private readonly ILogger<PersonController> _logger;
+        private IPersonService _personService;
         
 
-        public PersonController(ILogger<PersonController> logger)
+        public PersonController(ILogger<PersonController> logger, IPersonService personService)
         {
             _logger = logger;
+            _personService = personService;
         }
 
-        [HttpGet("sum/{primeiroNumero}/{segundoNumero}")]
-        public IActionResult Soma(string primeiroNumero, string segundoNumero)
+        [HttpGet]
+        public IActionResult Get()
         {
-           
-            return BadRequest("Valor invalido");
+            return Ok(_personService.FindAll());
         }
 
-
-        private decimal ConverterParaDecimal(string numero)
+        [HttpGet("{id}")]
+        public IActionResult Get(long id)
         {
-            decimal decimalValor;
-            if (decimal.TryParse(numero, out decimalValor))
+            var person = _personService.FindById(id);
+            if (person == null)
             {
-                return decimalValor;
+                return NotFound();
             }
-            return 0;
+            return Ok(person);
         }
 
-        private bool IsNumeric(string strNumero)
+        [HttpPost]
+        public IActionResult Post([FromBody] Person person)        
+        {           
+            if (person == null)
+            {
+                return BadRequest();
+            }
+            return Ok(_personService.Create(person));
+        }
+
+        [HttpPut]
+        public IActionResult Put([FromBody] Person person)
         {
-            double numero;
-            bool isNumber = double.TryParse(strNumero, System.Globalization.NumberStyles.Any, System.Globalization.NumberFormatInfo.InvariantInfo, out numero);
-            return isNumber;
+            if (person == null)
+            {
+                return BadRequest();
+            }
+            return Ok(_personService.Create(person));
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult Delete(long id)
+        {
+            _personService.Delete(id);          
+            return NoContent();
         }
 
     }
