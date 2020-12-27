@@ -2,21 +2,17 @@
 using CursoRESTComNetCore.Services.Implementations;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace CursoRESTComNetCore.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class PersonController : ControllerBase
-    {     
+    {
 
         private readonly ILogger<PersonController> _logger;
         private IPersonService _personService;
-        
+
 
         public PersonController(ILogger<PersonController> logger, IPersonService personService)
         {
@@ -42,8 +38,8 @@ namespace CursoRESTComNetCore.Controllers
         }
 
         [HttpPost]
-        public IActionResult Post([FromBody] Person person)        
-        {           
+        public IActionResult Post([FromBody] Person person)
+        {
             if (person == null)
             {
                 return BadRequest();
@@ -64,7 +60,7 @@ namespace CursoRESTComNetCore.Controllers
         [HttpDelete("{id}")]
         public IActionResult Delete(long id)
         {
-            _personService.Delete(id);          
+            _personService.Delete(id);
             return NoContent();
         }
 
