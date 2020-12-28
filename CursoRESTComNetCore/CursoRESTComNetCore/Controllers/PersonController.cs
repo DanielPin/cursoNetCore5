@@ -54,7 +54,7 @@ namespace CursoRESTComNetCore.Controllers
             {
                 return BadRequest();
             }
-            return Ok(_personService.Create(person));
+            return Ok(_personService.Update(person));
         }
 
         [HttpDelete("{id}")]

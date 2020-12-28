@@ -1,6 +1,8 @@
+using CursoRESTComNetCore.Model.Context;
 using CursoRESTComNetCore.Services.Implementations;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -21,6 +23,9 @@ namespace CursoRESTComNetCore
         {
 
             services.AddControllers();
+
+            var connection = Configuration["MySqlConnection:MySqlConnectionString"];
+            services.AddDbContext<MySqlContext>(options => options.UseMySql(connection));
 
             // Injeção de Dependencia
             services.AddScoped<IPersonService, PersonServiceImplementation>();
