@@ -5,8 +5,9 @@ using Microsoft.Extensions.Logging;
 
 namespace CursoRESTComNetCore.Controllers
 {
-    [ApiController]
-    [Route("api/[controller]")]
+    [ApiVersion("1")]
+    [ApiController]    
+    [Route("api/[controller]/v{version:apiVersion}")]
     public class PersonController : ControllerBase
     {
 

@@ -27,6 +27,8 @@ namespace CursoRESTComNetCore
             var connection = Configuration["MySqlConnection:MySqlConnectionString"];
             services.AddDbContext<MySqlContext>(options => options.UseMySql(connection));
 
+            services.AddApiVersioning();
+
             // Injeção de Dependencia
             services.AddScoped<IPersonService, PersonServiceImplementation>();
         }
