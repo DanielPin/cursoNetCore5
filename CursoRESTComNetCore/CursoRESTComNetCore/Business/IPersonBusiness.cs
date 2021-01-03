@@ -1,7 +1,7 @@
 ﻿using CursoRESTComNetCore.Model;
 using System.Collections.Generic;
 
-namespace CursoRESTComNetCore.Business.Implementations
+namespace CursoRESTComNetCore.Business
 {
     public interface IPersonBusiness
     {

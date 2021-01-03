@@ -1,4 +1,5 @@
 using CursoRESTComNetCore.Model.Context;
+using CursoRESTComNetCore.Business;
 using CursoRESTComNetCore.Business.Implementations;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;

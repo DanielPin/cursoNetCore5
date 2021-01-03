@@ -10,9 +10,9 @@ namespace CursoRESTComNetCore.Business.Implementations
 {
     public class PersonBusinessImplementation : IPersonBusiness
     {
-        private readonly IPersonBusiness _repository;
+        private readonly IPersonRepository _repository;
 
-        public PersonBusinessImplementation(IPersonBusiness repository)
+        public PersonBusinessImplementation(IPersonRepository repository)
         {
             _repository = repository;
         }
