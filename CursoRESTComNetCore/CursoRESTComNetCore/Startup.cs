@@ -1,11 +1,13 @@
 using CursoRESTComNetCore.Model.Context;
-using CursoRESTComNetCore.Services.Implementations;
+using CursoRESTComNetCore.Business.Implementations;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using CursoRESTComNetCore.Repository.Implementations;
+using CursoRESTComNetCore.Repository;
 
 namespace CursoRESTComNetCore
 {
@@ -30,7 +32,9 @@ namespace CursoRESTComNetCore
             services.AddApiVersioning();
 
             // Injeção de Dependencia
-            services.AddScoped<IPersonService, PersonServiceImplementation>();
+            services.AddScoped<IPersonBusiness, PersonBusinessImplementation>();
+            services.AddScoped<IPersonRepository, PersonRepositoryImplementation>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

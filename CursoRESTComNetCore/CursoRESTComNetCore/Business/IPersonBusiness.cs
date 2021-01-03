@@ -1,14 +1,15 @@
 ﻿using CursoRESTComNetCore.Model;
 using System.Collections.Generic;
 
-namespace CursoRESTComNetCore.Services.Implementations
+namespace CursoRESTComNetCore.Business.Implementations
 {
-    public interface IPersonService
+    public interface IPersonBusiness
     {
         Person Create(Person person);
         Person FindById(long id);
         List<Person> FindAll();
         Person Update(Person person);
         void Delete(long id);
+
     }
 }
