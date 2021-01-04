@@ -1,7 +1,6 @@
-INSERT INTO `person` 
-VALUES 
-(1,'Daniel', 'Nascimento', 'Rua Git ','Male'),
-(2,'Amanda','Rocha','Rua Git - São Paulo ','Female'),
-(3,'Jorge','Duarte','Rua Git 85484 - São Paulo ','Male');
-
-
+INSERT INTO `person` (`id`, `address`, `first_name`, `gender`, `last_name`) VALUES
+	(1, 'São Paulo - Brasil', 'Ayrton', 'Male', 'Senna'),
+	(2, 'Anchiano - Italy', 'Leonardo', 'Male', 'da Vinci'),
+	(3, 'Porbandar - India', 'Mahatma', 'Male', 'Gandhi'),
+	(4, 'Kentucky - USA', 'Mohamed Ali', 'Male', 'Gandhi'),
+	(5, 'Mvezo - South Africa', 'Nelson', 'Male', 'Mandela');
