@@ -7,11 +7,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using CursoRESTComNetCore.Repository.Implementations;
 using CursoRESTComNetCore.Repository;
 using Serilog;
 using System;
 using System.Collections.Generic;
+using CursoRESTComNetCore.Repository.Generic;
 
 namespace CursoRESTComNetCore
 {
@@ -50,8 +50,10 @@ namespace CursoRESTComNetCore
             services.AddApiVersioning();
 
             // Injeção de Dependencia
-            services.AddScoped<IPersonBusiness, PersonBusinessImplementation>();
-            services.AddScoped<IPersonRepository, PersonRepositoryImplementation>();
+            services.AddScoped<IPersonBusiness, PersonBusinessImplementation>();    
+            services.AddScoped<IBookBusiness, BookBusinessImplementation>();
+
+            services.AddScoped(typeof(IRepository<>), typeof(GenericRepository<>));
 
         }
 
